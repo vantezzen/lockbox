@@ -7,9 +7,9 @@ import React from "react";
 function Success() {
   const [hasCopiedPassword, setHasCopiedPassword] = React.useState(false);
   const store = useAddItemStore();
-  const appUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-    ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-    : process.env.NEXT_PUBLIC_APP_URL;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL
+    ? process.env.NEXT_PUBLIC_APP_URL
+    : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
   let secretUrl = `${appUrl}/${store.secretId}`;
   if (store.addPasswordToUrl) {
