@@ -1,38 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# LockBox
 
-## Getting Started
+LockBox is a secure, end-to-end encrypted secret sharing service. It allows you to securely share secrets with other people, without having to worry about your data being compromised.
 
-First, run the development server:
+When you share a secret, the data is encrypted directly on your device, meaning it never leaves your device unencrypted. The encrypted data is then securely stored on our server. The recipient can access the secret by entering the password and decrypting the data on their device. After the secret has been decrypted, it is deleted from our server and can no longer be accessed.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+LockBox can be accessed at <https://lockbox.vantezzen.io>.
+
+## Development
+
+1. Clone the repository
+2. Run `npm install` to install all dependencies
+3. Copy `.env.example` to `.env.local` and fill in the required values
+4. LockBox uses a Redis server to store data. If you don't have a Redis server you can run one on Docker using `docker run --name lockbox-redis -p 6389:6379 -d redis`
+5. Start the development server using `npm run dev`
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### hCaptcha
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+LockBox has an optional hCaptcha integration. If you want to use it, you need to create a hCaptcha account and create a site. Then, you need to set the `NEXT_PUBLIC_HCAPTCHA_SITEKEY` and `HCAPTCHA_SECRET_KEY` environment variables.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+LockBox is deployed to Vercel but you can deploy it to any NextJS-compatible service.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+MIT
