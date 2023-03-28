@@ -1,5 +1,4 @@
 import { Page } from "@geist-ui/core";
-import Link from "next/link";
 import React from "react";
 import Footer from "./Footer";
 
