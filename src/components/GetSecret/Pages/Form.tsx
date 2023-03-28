@@ -5,6 +5,7 @@ import useGetItemStore from "@/store/getItemStore";
 import downloadAndDecryptSecret from "@/lib/decryption/downloadAndDecryptSecret";
 import { Button, Input } from "@geist-ui/core";
 import React from "react";
+import Link from "next/link";
 
 function Form() {
   const [showCaptchaError, setShowCaptchaError] = React.useState(false);
@@ -62,6 +63,11 @@ function Form() {
         <Button type="secondary-light" htmlType="submit">
           Retrieve secret
         </Button>
+        <MutedText>
+          By retrieving a secret you agree to our{" "}
+          <Link href="/legal/terms">Terms of Service</Link> and{" "}
+          <Link href="/legal/privacy">Privacy Policy</Link>.
+        </MutedText>
       </InputGroup>
     </form>
   );

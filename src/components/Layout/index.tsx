@@ -1,10 +1,16 @@
 import { Page } from "@geist-ui/core";
+import Link from "next/link";
 import React from "react";
+import Footer from "./Footer";
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <Page dotBackdrop width="auto">
-      {children}
+      <Page.Content style={{ minHeight: "90vh" }}>{children}</Page.Content>
+
+      <Page.Footer className="!relative">
+        <Footer />
+      </Page.Footer>
     </Page>
   );
 }

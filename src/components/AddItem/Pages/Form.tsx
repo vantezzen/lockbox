@@ -1,6 +1,8 @@
 import InputGroup from "@/components/InputGroup";
+import MutedText from "@/components/MutedText";
 import useAddItemStore from "@/store/addItemStore";
 import { Button } from "@geist-ui/core";
+import Link from "next/link";
 import React from "react";
 import CaptchaVerification from "../../CaptchaVerification";
 import PasswordFormField from "../FormFields/PasswordFormField";
@@ -40,6 +42,11 @@ function Form({ encryptAndUpload }: { encryptAndUpload: () => void }) {
         <Button type="secondary-light" htmlType="submit">
           Upload secret
         </Button>
+        <MutedText>
+          By uploading your secret you agree to our{" "}
+          <Link href="/legal/terms">Terms of Service</Link> and{" "}
+          <Link href="/legal/privacy">Privacy Policy</Link>.
+        </MutedText>
       </InputGroup>
     </form>
   );

@@ -19,14 +19,14 @@ function PasswordFormField() {
     "automatic" | "manual"
   >("automatic");
 
-  const useRandomPassword = async () => {
+  const generateRandomPassword = async () => {
     const crypto = new Crypto();
     const randomPassword = await crypto.generateSecret();
     setItem({ ...item, password: randomPassword });
   };
 
   useEffect(() => {
-    useRandomPassword();
+    generateRandomPassword();
   }, []);
 
   return (
@@ -35,7 +35,7 @@ function PasswordFormField() {
         value={passwordBehavior}
         onChange={(value) => {
           if (value === "automatic") {
-            useRandomPassword();
+            generateRandomPassword();
           } else {
             setItem({ ...item, password: "" });
           }
@@ -65,7 +65,7 @@ function PasswordFormField() {
               </button>
             }
             onIconClick={async () => {
-              useRandomPassword();
+              generateRandomPassword();
               setShowPasswordField(true);
             }}
             iconClickable
