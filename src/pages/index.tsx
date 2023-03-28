@@ -1,4 +1,4 @@
-import AddItem from "@/components/AddItem";
+import AddItem from "@/components/AddSecret";
 import About from "@/components/Landing/About";
 import Layout from "@/components/Layout";
 import { Card, Text } from "@geist-ui/core";
@@ -18,7 +18,7 @@ function Index() {
         LockBox <Box size={30} />
       </Text>
 
-      <Card width="min(70vw, 500px)" mx="auto">
+      <Card width="min(90vw, 500px)" mx="auto">
         <AddItem hideLanding={() => setHideLanding(true)} />
       </Card>
 

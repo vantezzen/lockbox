@@ -7,7 +7,13 @@ import downloadSecret from "./download";
 
 export default async function downloadAndDecryptSecret() {
   const store = useGetItemStore.getState();
-  store.setPage(GetItemPage.Downloading);
+
+  const changePage = (page: GetItemPage) => {
+    store.setPage(page);
+    window.scrollTo(0, 0);
+  };
+
+  changePage(GetItemPage.Downloading);
   let item: EncryptionItem;
   try {
     const partialItem = await downloadSecret(
@@ -26,7 +32,7 @@ export default async function downloadAndDecryptSecret() {
     return;
   }
 
-  store.setPage(GetItemPage.Hashing);
+  changePage(GetItemPage.Hashing);
   let hashedPassword = "";
   try {
     hashedPassword = await hashPassword(
@@ -40,7 +46,7 @@ export default async function downloadAndDecryptSecret() {
     return;
   }
 
-  store.setPage(GetItemPage.Decrypting);
+  changePage(GetItemPage.Decrypting);
   let decryptedItem: EncryptionItem;
   try {
     decryptedItem = await processDecryptionItem(
@@ -61,5 +67,5 @@ export default async function downloadAndDecryptSecret() {
     console.error(e);
   }
 
-  store.setPage(GetItemPage.Success);
+  changePage(GetItemPage.Success);
 }

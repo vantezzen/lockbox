@@ -7,7 +7,12 @@ import uploadSecret from "./upload";
 export default async function encryptAndUploadSecret() {
   const store = useAddItemStore.getState();
 
-  store.setPage(AddItemPage.Hashing);
+  const changePage = (page: AddItemPage) => {
+    store.setPage(page);
+    window.scrollTo(0, 0);
+  };
+
+  changePage(AddItemPage.Hashing);
   let hashedPassword = "";
   try {
     hashedPassword = await hashPassword(
@@ -21,7 +26,7 @@ export default async function encryptAndUploadSecret() {
     return;
   }
 
-  store.setPage(AddItemPage.Encrypting);
+  changePage(AddItemPage.Encrypting);
   let encryptedItem: EncryptionItem;
   try {
     encryptedItem = await processEncryptionItem(
@@ -35,7 +40,7 @@ export default async function encryptAndUploadSecret() {
     return;
   }
 
-  store.setPage(AddItemPage.Uploading);
+  changePage(AddItemPage.Uploading);
   try {
     const secretId = await uploadSecret(encryptedItem, store.hCaptchaToken);
     store.setSecretId(secretId);
@@ -45,5 +50,5 @@ export default async function encryptAndUploadSecret() {
     return;
   }
 
-  store.setPage(AddItemPage.Success);
+  changePage(AddItemPage.Success);
 }
