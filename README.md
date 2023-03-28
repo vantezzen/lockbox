@@ -24,6 +24,8 @@ LockBox has an optional hCaptcha integration. If you want to use it, you need to
 
 LockBox is deployed to Vercel but you can deploy it to any NextJS-compatible service.
 
+If the app has been deployed to Vercel, `NEXT_PUBLIC_APP_URL` does not need to be set as the Vercel URL will be used instead.
+
 ## License
 
 MIT
