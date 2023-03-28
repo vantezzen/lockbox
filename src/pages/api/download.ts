@@ -14,7 +14,7 @@ export default async function handler(
   }
 
   const { id } = req.body as { id: string };
-  const { hCaptchaToken } = req.headers;
+  const hCaptchaToken = req.headers["hcaptcha-token"];
   const useCaptcha = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY !== undefined;
 
   // Validate input

@@ -3,7 +3,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="flex flex-col md:flex-row gap-6 justify-center mb-6">
+    <div className="flex flex-col sm:flex-row gap-6 justify-center mb-6">
       <a
         href="https://vantezzen.io"
         target="_blank"

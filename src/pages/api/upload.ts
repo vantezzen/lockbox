@@ -19,7 +19,7 @@ export default async function handler(
 
   const { content, storageDuration, securityLevel } =
     req.body as EncryptionItem;
-  const { hCaptchaToken } = req.headers;
+  const hCaptchaToken = req.headers["hcaptcha-token"];
   const useCaptcha = process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY !== undefined;
 
   // Validate input
